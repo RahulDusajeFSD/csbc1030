@@ -1,6 +1,10 @@
 # csbc1030
 
-Welcome to CSBC1030 - Fall 2023 
-This repo is where you will submit your assignments for review. 
+Assignment - 2
 
-Asignment 1 - Please refer to the instructions in Assignment1.txt for instructions on how to submit your work.
+To Run CJS index.js - hover to cjs folder and run node index.js
+
+
+To Run EJS index.js - hover to ejs folder and run node index.mjs
+
+NOTE: calculate.mjs and index.mjs represents the files written in ECMAScript module syntax in ejs.
