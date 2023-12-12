@@ -1,6 +1,9 @@
-# csbc1030
+The Project contsina three files:
 
-Welcome to CSBC1030 - Fall 2023 
-This repo is where you will submit your assignments for review. 
+1) sample_input_numbers.json which contains the array of numbers.
+2) sample_output_numbers.json contains transformed output.
+3) index.js reads the file (1) and iterates over the json array. The numbers are multiplied by 2 and writes the output to the file (2).
 
-Asignment 1 - Please refer to the instructions in Assignment1.txt for instructions on how to submit your work.
+To run the program. 
+
+node index.js
