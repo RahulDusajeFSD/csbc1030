@@ -47,6 +47,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Add User",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"userId\": 13,\n        \"title\": \"New Data\",\n        \"completed\": false\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:8077/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8077",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
