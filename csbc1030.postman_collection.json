@@ -7,22 +7,34 @@
 	},
 	"item": [
 		{
-			"name": "assignment-4",
+			"name": "assignment-6",
 			"item": [
 				{
-					"name": "Get All Users",
+					"name": "Generate /JWT Token",
 					"request": {
-						"method": "GET",
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"test\",\n  \"password\": \"test\",\n  \"user_id\": 2\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8095/users",
-							"protocol": "http",
+							"raw": "localhost:8078/users/login",
 							"host": [
 								"localhost"
 							],
-							"port": "8095",
+							"port": "8078",
 							"path": [
-								"users"
+								"users",
+								"login"
 							]
 						}
 					},
@@ -31,15 +43,31 @@
 				{
 					"name": "Get User with ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcwMjc0ODY1N30.9-whTvdDSRYUI8Eslt8JUsVEdFseX3JOOLJqPs5p1do",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:8095/users/2",
+							"raw": "http://localhost:8078/users/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8095",
+							"port": "8078",
 							"path": [
 								"users",
 								"2"
@@ -56,6 +84,16 @@
 						}
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcwMjc0NzM4N30.LgxstTcj2iwvECoaN3ollO4u8hEXfGUIyOGH_KjGPz",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -66,15 +104,34 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"userId\": 13,\n        \"title\": \"New Data\",\n        \"completed\": false\n}\n"
+							"raw": "{\n        \"userId\": 15,\n        \"title\": \"New Data\",\n        \"completed\": false\n}\n"
 						},
 						"url": {
-							"raw": "http://localhost:8077/users",
+							"raw": "http://localhost:8078/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8077",
+							"port": "8078",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8078/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8078",
 							"path": [
 								"users"
 							]

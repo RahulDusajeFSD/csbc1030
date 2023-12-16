@@ -10,9 +10,12 @@ Project Structure:
 
 4. Postman collection to run all three requests - 
 
+POST /login to generate JWT token.
+
 GET all users from file
-GET user by Id from file
-POST a user to the file  
+GET user by Id from file - uses authentication middleware
+POST a user to the file  - uses authentication and authorization(only user with userId 1 permitted) middleware
+
 
 To Run:
 
