@@ -1,17 +1,25 @@
-var express = require("express");
+// server.js
+const express = require('express');
+const userRoutes = require('./routes/routes');
+const sequelize = require('./database');
 
-var app = express();
-
+const app = express();
 const port = 8078;
 
-const userRoutes = require("./routes/routes");
 
-app.listen(port, () => {
-  try {
-    console.log(`Server Stared at port ${port}`);
-  } catch (error) {
-    console.error(`Error Setting up the server ${error}`);
-  }
-});
+app.use(express.json());
 
-app.use("/users", userRoutes);
+
+app.use('/users', userRoutes);
+
+
+sequelize.sync({ alter: true })
+  .then(() => {
+    console.log('All models were synchronized successfully.');
+    // Start the server
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  }).catch((error) => {
+    console.error('Unable to synchronize models with the database: ', error);
+  });

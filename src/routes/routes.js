@@ -1,21 +1,14 @@
-//Authentication - to verify the credentials of user
-//Authorization - what role role does successfuly authenticated user has.
-
 var express = require("express");
 
 var router = express.Router();
-
-const fs = require("fs");
 
 //Authentication imports
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'supersecrethidden';
 
 
-const filePath = __dirname + "/" + "../files/users.json";
-const usersData = fs.readFileSync(filePath, "utf-8");
 router.use(express.json());
-
+const sequelize = require('../database');
 
 
 // Takes JWT  from Headers and verifies with secretKey which is used at the time of signing JwT.
@@ -60,53 +53,53 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.get("/", (req,res) => {
+
+
+
+
+router.get("/", async (req, res) => {
   try {
-    res.send({
-      usersData: JSON.parse(usersData),
-    });
+    const results = await sequelize.query('SELECT * FROM users');
+    res.send({ usersData: results });
   } catch (error) {
-    console.error(
-      `Error reading the contents from users file - ${error.message}`,
-    );
-    res.send(`Error reading the contents from users file - ${error.message}`);
+    console.error(`Error reading users data - ${error.message}`);
+    res.status(500).send(`Error reading users data - ${error.message}`);
   }
 });
 
+router.get("/:id", authenticateUser, async (req, res) => {
+  const userId = req.params.id;
 
-router.get("/:id", authenticateUser, (req, res) => {
   try {
-    const usersData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    const userData = usersData.find((item) => item.userId == req.params.id);
+    const results = await sequelize.query(`SELECT * FROM users WHERE userId = ${userId}`);
 
-    console.log(`req.user.userId ${req.user.userId} and req.params.id ${req.params.id}`);
-    if (req.user.userId != req.params.id) {
+    if (results.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const userData = results[0];
+
+    if (req.user.userId != userId) {
       return res.status(403).json({ error: "Forbidden: Access denied" });
     }
 
     res.send({ userData });
   } catch (error) {
-    console.error(`Error reading the contents from users file - ${error.message}`);
-    res.status(500).send(`Error reading the contents from users file - ${error.message}`);
+    console.error(`Error reading user data - ${error.message}`);
+    res.status(500).send(`Error reading user data - ${error.message}`);
   }
 });
 
-router.post("/", authenticateUser, authorizeUser, (req, res) => {
+router.post("/", authenticateUser, authorizeUser, async (req, res) => {
+
+  const {userId, title, completed} = req.body;
   try {
-    const objectFromRequest = req.body; // data from the request
+    const results = await sequelize.query(`INSERT INTO users (userId, title, completed) VALUES (${userId}, ${title}, ${completed})`);
 
-    const usersDataFromfile = JSON.parse(fs.readFileSync(filePath, "utf-8")); // reading the existing users data
-
-    usersDataFromfile.push(objectFromRequest); // appending the new user's data to existing data
-
-    fs.writeFileSync(filePath, JSON.stringify(usersDataFromfile), "utf-8");
-
-    res.send({ objectFromRequest });
+    res.send("User Insreted successfully");
   } catch (error) {
-    console.error(`Error posting the content to users file - ${error.message}`);
-    res
-      .status(500)
-      .send(`Error posting the content to users file  - ${error.message}`);
+    console.error(`Error inserting user data - ${error.message}`);
+    res.status(500).send(`Error inserting user data - ${error.message}`);
   }
 });
 
