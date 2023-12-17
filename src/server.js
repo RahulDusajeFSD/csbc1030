@@ -16,7 +16,6 @@ app.use('/users', userRoutes);
 sequelize.sync({ alter: true })
   .then(() => {
     console.log('All models were synchronized successfully.');
-    // Start the server
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
