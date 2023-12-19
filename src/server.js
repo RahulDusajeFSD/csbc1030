@@ -4,7 +4,7 @@ const userRoutes = require('./routes/routes');
 const sequelize = require('./database');
 
 const app = express();
-const port = 8078;
+const port = 8079;
 
 
 app.use(express.json());
