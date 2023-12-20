@@ -1,6 +1,21 @@
-# csbc1030
+# csbc1030 Assignment 4
 
-Welcome to CSBC1030 - Fall 2023 
-This repo is where you will submit your assignments for review. 
+Project Structure:
 
-Asignment 1 - Please refer to the instructions in Assignment1.txt for instructions on how to submit your work.
+
+1) files/users.json contains sample JSON of users taken from https://jsonplaceholder.typicode.com/todos
+
+2) controller/userController.js contains business logic of the application.
+
+3) model/usersModel.js imports files from files/users.json and finds users & usersById
+
+3) routes/userRoutes.js contains routes coming in from server.js and routing them to userController.js
+
+4) Postman collection.
+
+
+To Run:
+
+1) clone the project into a folder.
+2) npm install
+2) node server.js
