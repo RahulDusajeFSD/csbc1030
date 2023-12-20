@@ -1,6 +1,22 @@
-# csbc1030
+# csbc1030 Assignment 7
 
-Welcome to CSBC1030 - Fall 2023 
-This repo is where you will submit your assignments for review. 
+Project Structure:
 
-Asignment 1 - Please refer to the instructions in Assignment1.txt for instructions on how to submit your work.
+
+
+1) src/controller/userController.js contains business logic.
+
+2) src/controller/authController.js contains login function for authentication
+
+3) src/model/usersModel.js performs connectivity with MySql Server SB and GET, POST operations
+
+4) src/userRoutes.js contains all the routes including authentication route.
+
+5) Postman collection.
+
+
+To Run:
+
+1) clone the project into a folder.
+2) npm install
+3) node server.js
