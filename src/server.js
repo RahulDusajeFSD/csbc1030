@@ -1,17 +1,15 @@
-var express = require("express");
+const express = require('express');
+const app = express();
+const userRoutes = require('./routes/userRoutes');
 
-var app = express();
+app.use('/users', userRoutes);  // starting point of application exposed to client. 
 
-const port = 8078;
+//the requests coming in from /users will be routed to userRoutes
 
-const userRoutes = require("./routes/routes");
+
+const port = 8084;
+
 
 app.listen(port, () => {
-  try {
-    console.log(`Server Stared at port ${port}`);
-  } catch (error) {
-    console.error(`Error Setting up the server ${error}`);
-  }
+  console.log(`Server is running on port ${port}`);
 });
-
-app.use("/users", userRoutes);

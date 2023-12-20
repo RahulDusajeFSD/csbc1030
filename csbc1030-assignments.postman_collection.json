@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "f668c0d2-db06-4bff-9075-c8df276841df",
-		"name": "csbc1030",
+		"_postman_id": "f5b5a134-cd10-4e23-b704-ae50ddd6059e",
+		"name": "csbc1030-assignments",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10895002"
 	},
@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"test\",\n  \"password\": \"test\",\n  \"user_id\": 2\n}\n",
+							"raw": "{\n  \"username\": \"user_1\",\n  \"password\": \"user_1\",\n  \"user_id\": 1\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -27,11 +27,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8078/users/login",
+							"raw": "localhost:8084/users/login",
 							"host": [
 								"localhost"
 							],
-							"port": "8078",
+							"port": "8084",
 							"path": [
 								"users",
 								"login"
@@ -48,7 +48,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcwMjc0ODY1N30.9-whTvdDSRYUI8Eslt8JUsVEdFseX3JOOLJqPs5p1do",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidXNlcl8xIiwiaWF0IjoxNzAzMDk1Mjg2fQ.RsCnNIKtRXgnes2QbL_gjPZz_6YJK3vYfYGwaYCgbwA",
 									"type": "string"
 								}
 							]
@@ -62,15 +62,15 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8078/users/2",
+							"raw": "http://localhost:8084/users/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8078",
+							"port": "8084",
 							"path": [
 								"users",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -89,7 +89,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTcwMjc0NzM4N30.LgxstTcj2iwvECoaN3ollO4u8hEXfGUIyOGH_KjGPz",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidXNlcl8xIiwiaWF0IjoxNzAzMDk1Mjg2fQ.RsCnNIKtRXgnes2QbL_gjPZz_6YJK3vYfYGwaYCgbwA",
 									"type": "string"
 								}
 							]
@@ -107,12 +107,12 @@
 							"raw": "{\n        \"userId\": 15,\n        \"title\": \"New Data\",\n        \"completed\": false\n}\n"
 						},
 						"url": {
-							"raw": "http://localhost:8078/users",
+							"raw": "http://localhost:8084/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8078",
+							"port": "8084",
 							"path": [
 								"users"
 							]
@@ -126,12 +126,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8078/users",
+							"raw": "http://localhost:8084/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8078",
+							"port": "8084",
 							"path": [
 								"users"
 							]
