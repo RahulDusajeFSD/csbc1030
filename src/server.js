@@ -1,17 +1,12 @@
-var express = require("express");
+const express = require('express');
+const app = express();
+const userRoutes = require('./routes/routes');
 
-var app = express();
 
-const port = 8078;
+app.use('/users', userRoutes);
 
-const userRoutes = require("./routes/routes");
 
+const port = 8082;
 app.listen(port, () => {
-  try {
-    console.log(`Server Stared at port ${port}`);
-  } catch (error) {
-    console.error(`Error Setting up the server ${error}`);
-  }
+  console.log(`Server is running on port ${port}`);
 });
-
-app.use("/users", userRoutes);
