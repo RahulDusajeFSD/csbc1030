@@ -45,6 +45,7 @@ async function getPostsOfUser(userId) {
 async function getCommentsOfPost(userId){
 
   try{
+    console.log(userId);
     const getPosts = await getPostsOfUser(userId);
 
     const getPostsIdOfUser = getPosts.map((item)=>item.id);
@@ -61,6 +62,55 @@ async function getCommentsOfPost(userId){
   }
 }
 
+async function createNewPost(userId, postData){
+  try{
+    console.log(userId);
+    const {id, title, body} = postData;
 
 
-module.exports = { getUsers, testConnection, getPostsOfUser, getCommentsOfPost };
+    console.log(`Insert into posts values(${userId}, ${id}, "${title}", "${body}")`)
+    await sequelize.query(`Insert into posts values(${userId}, ${id}, "${title}", "${body}")`);
+
+    return "Successfully created a post";
+  }catch(error){
+    throw new Error(`Error creating posts for user - ${userId}: ${error.message}`);
+  }
+}
+
+
+async function updatePost(userId, postData){
+  try{
+    const {id, title, body} = postData;
+    console.log(`Update Posts set title = ${title}, body =${body} where id = ${id} and userId = ${userId}`);
+    await sequelize.query(`Update Posts set title = "${title}", body ="${body}" where id = ${id} and userId = ${userId}`);
+
+
+  }catch(error){
+    throw new Error(`Error updating posts for postId - ${id}: ${error.message}`);
+  }
+}
+
+async function updateComment(userId, commentData){
+  try{
+    const {postId, id, email, name, body} = commentData;
+    console.log(`update comments set name="${name}", email="${email}", body="${body}" where id =${id} and postId = ${postId}`);
+    await sequelize.query(`update comments set name="${name}", email="${email}", body="${body}" where id =${id} and postId = ${postId}`);
+
+
+  }catch(error){
+    throw new Error(`Error updating comment for CommentId - ${id}: ${error.message}`);
+  }
+}
+
+async function deleteComment(userId, commentId){
+  try{
+    console.log(`Delete from comments where id = ${commentId}`)
+    await sequelize.query(`Delete from comments where id = ${commentId}`);
+  }catch(error){
+    throw new Error(`Error deleting a comment for CommentId - ${commentId}: ${error.message}`);
+  }
+}
+
+module.exports = { getUsers, testConnection, getPostsOfUser, getCommentsOfPost, createNewPost, updatePost, updateComment, deleteComment };
+
+//update comments set name="updated_comment", email="updated_comment", body="updated_body" where id=1 and postId=1;

@@ -18,8 +18,8 @@ function authenticateUser(req, res, next) {
 }
 
 function authorizeUser(req, res, next) {  // only permits the user with id 1
-  const userId = req.user.userId;
-  //const userId = req;
+  const userId = req.user.id;
+  console.log(userId);
   if (userId !== 1) {              
     return res.status(403).json({ error: 'Forbidden: Insufficient privileges' });
   }

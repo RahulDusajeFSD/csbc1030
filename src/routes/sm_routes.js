@@ -15,4 +15,13 @@ router.get("/posts", sm_auth_middleware.authenticateUser, sm_auth_middleware.aut
 
 router.get("/posts/comments", sm_auth_middleware.authenticateUser, sm_auth_middleware.authorizeUser, sm_controller.getCommentsOfPost);
 
+
+router.post('/posts', sm_auth_middleware.authenticateUser, sm_auth_middleware.authorizeUser, sm_controller.createNewUserPost);
+
+router.put('/update/post', sm_auth_middleware.authenticateUser, sm_auth_middleware.authorizeUser, sm_controller.updatePost);
+
+router.put('/update/comment', sm_auth_middleware.authenticateUser, sm_auth_middleware.authorizeUser, sm_controller.updateComment);
+
+router.delete('/delete/comment', sm_auth_middleware.authenticateUser, sm_auth_middleware.authorizeUser, sm_controller.deleteComment);
+
 module.exports=router;

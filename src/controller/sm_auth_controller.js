@@ -5,7 +5,7 @@ function login(req, res) {              // requests coming from userRoutes. The 
   const { username, email, id } = req.body;
   
   if (username === 'learm' && email === 'learm@gmail.com') {      
-    const token = authModel.generateToken({ id: id, username: username });  // only if the values are matched - it generates the JWT token defined in authModel.js
+    const token = authModel.generateToken({ userId: id, username: username });  // only if the values are matched - it generates the JWT token defined in authModel.js
     res.json({ token });
   } else {
     res.status(401).json({ error: 'Authentication failed' });
