@@ -11,6 +11,7 @@ sm_model.testConnection();
 
 const port = 8092;  // 
 
+//ygu
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
