@@ -9,7 +9,7 @@ app.use('/users', sm_routes);
 
 sm_model.testConnection();
 
-const port = 8092;
+const port = process.env.PORT || 8092;
 
 
 app.listen(port, () => {

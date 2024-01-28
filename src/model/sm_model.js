@@ -4,7 +4,8 @@ const { Sequelize } = require('sequelize');
 //const { getPostsOfUser } = require('../controller/sm_controller');
 
 const sequelize = new Sequelize('social_media', 'root', 'Planet@1122334455', {
-  host: 'localhost',
+  //host: 'localhost',
+  host: 'host.docker.internal',
   dialect: 'mysql', 
 });
 
