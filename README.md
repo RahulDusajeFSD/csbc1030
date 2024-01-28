@@ -27,7 +27,7 @@ posts
 --> 
 
 comments
-
+.
 <!-- | postId | id | name          | email                    | body          |
 +--------+----+---------------+--------------------------+---------------+
 |      1 |  1 | name_comment1 | email_comment1@gmail.com | body_comment1 |          post 1 comment 1
