@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "f5b5a134-cd10-4e23-b704-ae50ddd6059e",
+		"name": "csbc1030-assignments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10895002"
+	},
+	"item": [
+		{
+			"name": "final-assignment",
+			"item": [
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8092/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"username\": \"learm\",\n    \"email\": \"learm@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8092/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Posts of Authenticated User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJsZWFybSIsImlhdCI6MTcwMzM1NzAwM30.a1vibxL_UXejKOItaCn1Aa1QVLPOK_Op1uQrE9o8j88",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8092/users/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comments of posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJsZWFybSIsImlhdCI6MTcwMzM1NzAwM30.a1vibxL_UXejKOItaCn1Aa1QVLPOK_Op1uQrE9o8j88",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8092/users/posts/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"posts",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJsZWFybSIsImlhdCI6MTcwMzM1NDUzOX0.Pfi1MzgIUSPGdycGCNeeZoAL8yekCvBr1jnTm0HrPpc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 8,\n    \"title\": \"title_new\",\n    \"body\": \"body_new\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8092/users/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJsZWFybSIsImlhdCI6MTcwMzM1NDUzOX0.Pfi1MzgIUSPGdycGCNeeZoAL8yekCvBr1jnTm0HrPpc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"title\": \"updated_title_new\",\n    \"body\": \"updated_body_new\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8092/users/update/post",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"update",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJsZWFybSIsImlhdCI6MTcwMzM1NDUzOX0.Pfi1MzgIUSPGdycGCNeeZoAL8yekCvBr1jnTm0HrPpc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"postId\": 1,\n    \"name\": \"updated_name\",\n    \"email\": \"updated_email\",\n    \"body\": \"updated_body_new\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8092/users/update/comment",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"update",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJsZWFybSIsImlhdCI6MTcwMzM1NDUzOX0.Pfi1MzgIUSPGdycGCNeeZoAL8yekCvBr1jnTm0HrPpc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commentId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8092/users/delete/comment",
+							"host": [
+								"localhost"
+							],
+							"port": "8092",
+							"path": [
+								"users",
+								"delete",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
